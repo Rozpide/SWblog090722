@@ -1,15 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
-
-import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
-import injectContext from "./store/appContext";
-
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Personaje } from "../js/views/Personaje.jsx";
+import { BodyPlanetas } from "../js/views/BodyPlanetas.jsx";
+import {Planet} from "../js/views/Planet.jsx";
+import { Body } from "../js/views/Body.jsx";
+import { Header } from "../js/component/header.jsx";
+import injectContext from "./store/appContext.js";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -17,28 +13,22 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
+		<>
+        <div className="container-fluid mt-4">
+
+            <BrowserRouter>
+                <Header />
+                <hr></hr>
+                <Switch>
+                <Route exact path="/planets/:id" component={Planet} />
+                    <Route exact path="/people/:id" component={Personaje} />
+                    <Route exact path="/planetas" component={BodyPlanetas} />
+                    <Route exact path="/" component={Body} />
+                    <Route render={() => <h1 className="text-center">no lo encuentro....</h1>} />
+                </Switch>
+            </BrowserRouter>
+        </div>
+    </>
 	);
 };
 
