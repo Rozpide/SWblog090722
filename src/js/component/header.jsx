@@ -34,7 +34,7 @@ export const Header = () => {
                                 <a className="dropdown-item" href="#">No hay favoritos!</a>
                                 :
                                 store.favorite.map((ele, i) => {
-                                    return <a key={i} className="dropdown-item">{ele}<i className="fas fa-trash float-right" onClick={() => actions.removeFavorite(ele)}></i></a>
+                                    return (<a key={i} className="dropdown-item">{ele}<i className="fas fa-trash float-right" onClick={() => actions.removeFavorite(ele)}></i></a>)
                                 })
                         }
                     </div>
