@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import getState from "../store/flux";
 export const Header = () => {
     const { store, actions } = useContext(Context);
     return (<>
@@ -21,11 +21,11 @@ export const Header = () => {
                     </li>
                 </ul>
             </div>
-
+            {getState}
             <div className="col-md-2">
                 <div className="dropleft float-right">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        Favoritos<span id="spanNum"><p className="font-weight-bold" id="pNum">{store.favorite.length}</p></span>
+                  
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">Favoritos<span id="spanNum"><p className="font-weight-bold" id="pNum">{store.favorite.length}</p></span>
                     </button>
                     <div className="dropdown-menu"  aria-labelledby="dropdownMenuButton">
                         {
